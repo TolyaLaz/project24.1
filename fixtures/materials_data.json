@@ -1,0 +1,70 @@
+[
+  {
+    "model": "materials.course",
+    "pk": 1,
+    "fields": {
+      "owner": 3,
+      "name": "Курс",
+      "description": "",
+      "image": ""
+    }
+  },
+  {
+    "model": "materials.course",
+    "pk": 2,
+    "fields": {
+      "owner": 4,
+      "name": "Курс2",
+      "description": "",
+      "image": ""
+    }
+  },
+  {
+    "model": "materials.lesson",
+    "pk": 1,
+    "fields": {
+      "owner": 4,
+      "name": "Урок1",
+      "description": "",
+      "image": "",
+      "course": 1,
+      "url": null
+    }
+  },
+  {
+    "model": "materials.lesson",
+    "pk": 2,
+    "fields": {
+      "owner": 2,
+      "name": "Урок2",
+      "description": "",
+      "image": "",
+      "course": 1,
+      "url": null
+    }
+  },
+  {
+    "model": "materials.lesson",
+    "pk": 3,
+    "fields": {
+      "owner": null,
+      "name": "Урок3",
+      "description": "",
+      "image": "",
+      "course": 1,
+      "url": null
+    }
+  },
+  {
+    "model": "materials.lesson",
+    "pk": 4,
+    "fields": {
+      "owner": 4,
+      "name": "Урок4",
+      "description": null,
+      "image": "",
+      "course": 1,
+      "url": null
+    }
+  }
+]

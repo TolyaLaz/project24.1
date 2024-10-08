@@ -1,10 +1,14 @@
 from django.db import models
 
+from config import settings
+
 NULLABLE = {'blank': True, 'null': True}
 
 
 class Course(models.Model):
     """Модель курса"""
+    owner = models.ForeignKey(to=settings.AUTH_USER_MODEL, on_delete=models.CASCADE, verbose_name='владелец',
+                              **NULLABLE)
     name = models.CharField(max_length=100, verbose_name='название курса', help_text='введите название курса')
     description = models.TextField(verbose_name='описание курса', help_text='введите описание курса', **NULLABLE)
     image = models.ImageField(upload_to='materials/course', verbose_name='изображение',
@@ -20,6 +24,8 @@ class Course(models.Model):
 
 class Lesson(models.Model):
     """Модель урока, параметр url это ссылка на видео урока"""
+    owner = models.ForeignKey(to=settings.AUTH_USER_MODEL, on_delete=models.CASCADE, verbose_name='владелец',
+                              **NULLABLE)
     name = models.CharField(max_length=100, verbose_name='название урока', help_text='введите название')
     description = models.TextField(verbose_name='описание урока', help_text='введите описание', **NULLABLE)
     image = models.ImageField(upload_to='materials/lesson', verbose_name='изображение',
