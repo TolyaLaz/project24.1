@@ -82,10 +82,14 @@ class Payment(models.Model):
         verbose_name='способ оплаты',
         help_text='выберите способ оплаты'
     )
-    payment_amount = models.DecimalField(
-        max_digits=10,
-        decimal_places=2,
-        verbose_name="Сумма платежа",
+    session_id = models.CharField(
+        max_length=255,
+        verbose_name='id сессии',
+        **NULLABLE
+    )
+    payment_link = models.URLField(
+        max_length=400,
+        verbose_name='ссылка на оплату',
         **NULLABLE
     )
 
