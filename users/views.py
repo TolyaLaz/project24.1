@@ -2,11 +2,13 @@ from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework import filters
 from rest_framework import generics
 from rest_framework.permissions import AllowAny
-
+from datetime import datetime
 from materials.models import Course, Lesson
 from users.models import Payment, User
 from users.serializers import PaymentSerializer, UserSerializer, UserViewSerializer
 from users.services import create_stripe_product, create_stripe_price, create_stripe_session
+import pytz
+from config import settings
 
 
 class PaymentListAPIView(generics.ListAPIView):
@@ -44,6 +46,7 @@ class UserCreateAPIView(generics.CreateAPIView):
     def perform_create(self, serializer):
         user = serializer.save(is_active=True)
         user.set_password(user.password)
+        user.last_login = datetime.now(pytz.timezone(settings.TIME_ZONE))
         user.save()
 
 class UserUpdateAPIView(generics.UpdateAPIView):

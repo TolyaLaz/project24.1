@@ -20,6 +20,9 @@ ipython = "^8.28.0"
 django-cors-headers = "^4.5.0"
 drf-yasg = "^1.21.8"
 stripe = "^11.1.1"
+celery = "^5.4.0"
+eventlet = "^0.37.0"
+redis = "^5.2.0"
 
 
 [build-system]

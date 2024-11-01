@@ -8,6 +8,7 @@ from materials.serializers import CourseSerializer, LessonSerializer
 from rest_framework.permissions import IsAuthenticated
 
 from users.permissions import IsModerator, IsOwner
+from materials.tasks import send_updates
 
 @method_decorator(name='list', decorator=swagger_auto_schema(
     operation_description="description from swagger_auto_schema via method_decorator"
@@ -21,6 +22,12 @@ class CourseViewSet(ModelViewSet):
         """ Привязывает курс к пользователю при создании. """
         instance = serializer.save()
         instance.owner = self.request.user
+        instance.save()
+
+    def perform_update(self, serializer):
+        """ Запускает send_updates при редактировании курса. """
+        instance = serializer.save()
+        send_updates.delay(instance.pk)
         instance.save()
 
     def get_permissions(self):
