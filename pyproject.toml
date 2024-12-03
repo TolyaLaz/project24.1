@@ -9,7 +9,7 @@ packages = [{include = "project24"}]
 [tool.poetry.dependencies]
 python = "^3.12"
 django = "4.2.2"
-psycopg2 = "^2.9.9"
+psycopg2-binary = "^2.9.10"
 pillow = "^10.4.0"
 djangorestframework = "^3.15.2"
 serializers = "^0.2.4"
@@ -23,6 +23,7 @@ stripe = "^11.1.1"
 celery = "^5.4.0"
 eventlet = "^0.37.0"
 redis = "^5.2.0"
+
 
 
 [build-system]
